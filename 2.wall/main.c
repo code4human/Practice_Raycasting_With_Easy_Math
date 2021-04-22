@@ -15,7 +15,7 @@ int		main(int ac, char** av)
 	py = atof(av[2]);
 	theta = deg2rad(atof(av[3]));
 
-	// 인자 처리 뒤에 MAP을 한번 출력한다. (map과 screen은 y인덱스 순서가 다르다.)
+	// 인자 처리 뒤에 MAP을 한번 출력한다. (map과 screen은 인덱스 순서가 다르다.)
 	for (int y=MAPY-1; y>=0; y--)
 	{
 		for (int x=0; x<MAPX; x++)

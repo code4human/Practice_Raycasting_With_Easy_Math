@@ -1,6 +1,6 @@
 #include "wall_header.h"
 
-// cast_single_ray : 빛줄기 한 개를 쏜다.
+// cast_single_ray : 빛줄기 한 개를 쏘고, 부딪힌 벽까지의 거리를 반환한다.
 double	cast_single_ray(int x, double px, double py, double theta)
 {
 	double ray = (theta + FOV_H_DIV2) - (x * ANGLE_PER_PIXEL);
