@@ -27,7 +27,7 @@ bool	get_wall_intersection(double ray, double px, double py,
 	// xstep, ystep : 각도대로 ray를 쏠 때 x축과 y축 방향으로 증가할지/감소할지/꼼짝말지 여부
 	// ex. ray = 270도 -> xstep = 0 (정지) , ystep = -1 (-방향으로 감소)
 	// 삼각함수 상에서 단위원(r=1) 상의 한 점 : (cos세타, sin세타)
-	//                  -> is_sign(cos(ray)), is_sign(sin(ray))
+	//                  -> x좌표 부호 : is_sign(cos(ray)), y좌표 부호 : is_sign(sin(ray))
 	int xstep = is_sign(cos(ray));   // +1(right), 0(no change), -1(left)
 	int ystep = is_sign(sin(ray));   // +1(up),    0(no change), -1(down)
 
@@ -40,8 +40,8 @@ bool	get_wall_intersection(double ray, double px, double py,
 	double xslope = (xstep == 0) ? INFINITY : tan(ray);
 	double yslope = (ystep == 0) ? INFINITY : 1./tan(ray);
 
-	// nx, ny : (px, py)에서 출발한 빛이 다음 번에 도달할 x, y 좌표
-	//          초깃값은 xstep과 ystep에 따라 정해진다.
+	// nx, ny : (px, py)에서 출발한 빛이 다음 번 격자에 도달할 x, y 좌표 
+	//          초깃값은 xstep과 ystep에 따라 정해진다. -> (nx, f(nx)), (g(ny),ny) 로 사용됨.
 	double nx = (xstep > 0) ? floor(px)+1 : ((xstep < 0) ? ceil(px)-1 : px);   // floor: 내림
 	double ny = (ystep > 0) ? floor(py)+1 : ((ystep < 0) ? ceil(py)-1 : py);   // ceil: 올림
 
@@ -62,7 +62,7 @@ bool	get_wall_intersection(double ray, double px, double py,
 		
 		// 플레이어에게 어떤 좌표가 더 가까운가 - VERT(nx, f) or HORIZ(g, ny)
 		// dist_v : (px,py)에서 빛줄기를 쐈을 때 다음 번 격자(nx,ny)=(nx,f(nx))의 세로선까지의 거리
-		// dist_h : (px,py)에서 빛줄기를 쐈을 때 다음 번 격자(nx,ny)=(nx,g(nx))의 가로선까지의 거리
+		// dist_h : (px,py)에서 빛줄기를 쐈을 때 다음 번 격자(nx,ny)=(g(ny),ny)의 가로선까지의 거리
 		double dist_v = l2dist(px, py, nx, f);
 		double dist_h = l2dist(px, py, g, ny);
 
@@ -82,7 +82,7 @@ bool	get_wall_intersection(double ray, double px, double py,
 			hit_side = HORIZ;
 			printf(" H(%.2f, %d) -->", g, mapy);
 		}
-		// 거리를 비교해서 더 가까운 교점을 택하여, 그 점이 속한 맵 인덱스를 mapx, mapy로 얻어낸다. 
+		// 거리를 비교해서 더 가까운 교점을 택한 뒤, 그 점이 속한 맵 인덱스를 mapx, mapy로 얻어낸다. 
 		// (mapx, mapy)의 cell 정보가 0(통로)인지 1(벽)인지 판단한다.
 		int cell = map_get_cell(mapx, mapy);
 		// out of map
@@ -109,6 +109,7 @@ bool	get_wall_intersection(double ray, double px, double py,
 			printf(" hit wall!\n");
 			break;
 		}
+		// cell == 0 이면 while 반복
 		if (hit_side == VERT) nx += xstep;
 		else ny += ystep;
 	}
