@@ -15,7 +15,8 @@ int		main(int ac, char** av)
 	py = atof(av[2]);
 	theta = deg2rad(atof(av[3]));
 
-	// 인자 처리 뒤에 MAP을 한번 출력한다. (map과 screen은 인덱스 순서가 다르다.)
+	// 인자 처리 뒤에 MAP을 한번 출력한다. 
+	// 2차원 배열은 인덱스 순서가 다르므로 MAP(y가 위로, x가 오른쪽으로 증가하는 좌표평면)에 맞게 출력한다. 
 	for (int y=MAPY-1; y>=0; y--)
 	{
 		for (int x=0; x<MAPX; x++)
