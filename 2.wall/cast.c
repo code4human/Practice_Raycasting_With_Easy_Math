@@ -117,15 +117,3 @@ bool	get_wall_intersection(double ray, double px, double py,
 
 	return hit;
 }
-
-
-
-
-
-
-
-
-
-
-
-
