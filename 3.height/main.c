@@ -11,7 +11,7 @@ int		main(int ac, char** av)
 		dir_t wdir;
 		// cast_single_ray에서 얻어온 벽까지의 거리 wdist를 사용하여, draw_wall에서 화면에 그린다.
 		double wdist = cast_single_ray(x, px, py, theta, &wdir);
-		draw_wall(gr, wdist, x, wall_colors(wdir));
+		draw_wall(gr, wdist, x, wall_colors[wdir]);
 	}
 	gr_flush(gr);   // 변경사항 반영하여 그리기
 	gr_waitkey(gr);   // 키 대기
