@@ -1,5 +1,6 @@
 #ifndef WALL_HEADER_H
 # define WALL_HEADER_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
