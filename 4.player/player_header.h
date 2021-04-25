@@ -1,8 +1,6 @@
 #ifndef PLAYER_HEADER.H
 # define PLAYER_HEADER.H
 
-#include <SDL2/SDL.h>
-
 #define _2PI    6.28318530717958647692   // 2*M_PI
 
 #define ROT_UNIT        0.03   // <- or -> 방향키 한번 누를 때 회전할 각도
