@@ -10,7 +10,7 @@
 #define  WALL_H     1.0
 
 
-/* ---- SDL 그래픽스 라이브러리 ---- */
+/* ---- SDL 그래픽스 라이브러리를 변형하여 아래와 같은 형태로 사용 ---- */
 /*
 // 초기화한 그래픽스용 구조체 포인터 반환
 void*	gr_init(int w, int h, const char* title);
