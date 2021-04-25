@@ -1,8 +1,6 @@
 #ifndef HEIGHT_HEADER_H 
 # define HEIGHT_HEADER_H
 
-#include <SDL2/SDL.h>
-
 /* ---- 2.wall 매크로 재사용 ---- */
 #define  SX         400     // screen width
 #define  SY         250     // screen height

@@ -3,8 +3,8 @@
 // 벽을 그릴 픽셀 개수 반환
 int 	get_wall_height(double dist)
 {
-	double doubled_H = 2.0 * dist * tan(FOV_V / 2.0);   // 2H
-	int w = (int)(SY * (WALL_H / doubled_H));   // w = SY * (1 / 2H)
+	double _2H = 2.0 * dist * tan(FOV_V / 2.0);   // 2*H
+	int w = (int)(SY * (WALL_H / _2H));   // w = SY * (1 / 2H)
 	return w;
 }
 
