@@ -1,7 +1,7 @@
 #ifndef TEXTURE_HEADER.H
 # define TEXTURE_HEADER.H
 
-// 텍스처 이미지 정보
+/* ---- 텍스처 이미지 정보 ---- */
 typedef struct {
     int w, h;
     char* name;
@@ -15,5 +15,9 @@ int gr_img_getpixel(imt_t*, int x, int y);
 // 점 하나를 찍는 함수
 int gr_putpixel(void*, int x, int y, int color);
 */
+
+/* ---- luminosity.c ---- */
+double get_luminosity(double dist);
+int fade_color(int color, double lum);
 
 #endif

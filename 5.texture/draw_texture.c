@@ -26,7 +26,9 @@ void 	draw_wall(void* gr, double wdist, int x, int color)
     for (int y=ystart; y<yend; y++)
     {
         int ty = (int)((double)(y-y0) * ptex->h / wh);
-        int color = gr_img_getpixel(ptex, tx, ty);
+        double lum = get_luminosity(wdist);
+        // 텍스처 (tx, ty)에 있는 색상을 fade 시킨다.
+        int color = fade_color(gr_img_getpixel(ptex, tx, ty), lum);
         gr_putpixel(gr, x, y, color);
     }
 }
